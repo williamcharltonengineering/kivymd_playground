@@ -1,15 +1,18 @@
 pipeline {
-    agent {
-        docker { 
-            image 'kivy/buildozer:latest'
-            args '-v "$(pwd)":/home/user/hostcwd'
-        }
-    }
+    agent none
     stages {
-        stage('Test') {
-            steps {
-                sh 'buildozer --version'
+        stage('build')
+            agent {
+                docker { 
+                    image 'kivy/buildozer:latest'
+                    args '-v "$(pwd)":/home/user/hostcwd'
+                }
             }
-        }
+            steps {
+                steps {
+                    sh 'buildozer --version'
+                }
+            }
     }
+
 }
