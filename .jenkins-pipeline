@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('build')
+        stage('build') {
             agent {
                 docker { 
                     image 'kivy/buildozer:latest'
@@ -13,6 +13,6 @@ pipeline {
                     sh 'buildozer --version'
                 }
             }
+        }
     }
-
 }
