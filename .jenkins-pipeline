@@ -5,7 +5,8 @@ pipeline {
     stages {
         stage('build') {
             agent {
-                docker { 
+                docker {
+                    label 'docker'
                     image 'kivy/buildozer:latest'
                     args '-v "$(pwd)":/home/user/hostcwd'
                 }
