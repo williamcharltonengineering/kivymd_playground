@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 sh 'buildozer --version'
-                sh 'if [ ! -f android-ndk-r23c-linux.zip ] ; then cpython -c "import requests; r = requests.get(\'https://dl.google.com/android/repository/android-ndk-r23c-linux.zip\') ; open(\'android-ndk-r23c-linux.zip\' , \'wb\').write(r.content)" ; fi'
+                sh 'if [ ! -f android-ndk-r23c-linux.zip ] ; then python -c "import requests; r = requests.get(\'https://dl.google.com/android/repository/android-ndk-r23c-linux.zip\') ; open(\'android-ndk-r23c-linux.zip\' , \'wb\').write(r.content)" ; fi'
                 sh 'yes | buildozer android debug'
             }
         }
