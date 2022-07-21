@@ -107,7 +107,7 @@ fullscreen = 0
 #android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 23c
+#android.ndk = 23c
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -116,7 +116,8 @@ android.ndk = 23c
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-#android.ndk_path =
+# this file downloaded manually (in pipeline step) by jenkins in pipeline
+#android.ndk_path = android-ndk-r23c-linux.zip
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
