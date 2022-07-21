@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 sh 'buildozer --version'
-                sh 'echo y | buildozer android debug'
+                sh 'buildozer android debug'
             }
         }
     }
