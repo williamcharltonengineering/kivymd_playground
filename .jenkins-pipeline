@@ -8,11 +8,12 @@ pipeline {
                 docker {
                     label 'docker'
                     image 'kivy/buildozer:latest'
-                    args '-v ' + env.WORKSPACE + ':/home/user/hostcwd --entrypoint=""'
+                    args '-v ' + env.WORKSPACE + ':/home/user/hostcwd --entrypoint="sh"'
                 }
             }
             steps {
-                sh 'buildozer --version'
+                'buildozer --version'
+                'echo y | buildozer android debug'
             }
         }
     }
