@@ -8,7 +8,7 @@ pipeline {
                 docker {
                     label 'docker'
                     image 'kivy/buildozer:latest'
-                    args '-v "$(pwd)":/home/user/hostcwd'
+                    args '-v ${env.WORKSPACE}/${env.BUILD_ID}:/home/user/hostcwd'
                 }
             }
             steps {
