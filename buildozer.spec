@@ -120,7 +120,7 @@ fullscreen = 0
 android.ndk_path = android-ndk-r23c-linux.zip
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-#android.sdk_path =
+android.sdk_path = platform-27_r03.zip
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
