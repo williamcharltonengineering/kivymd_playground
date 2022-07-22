@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 sh 'buildozer --version'
-                sh 'buildozer android debug'
+                sh 'CC=gcc buildozer android debug'
             }
         }
     }
