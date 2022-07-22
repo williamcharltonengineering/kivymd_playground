@@ -18,7 +18,6 @@ pipeline {
             steps {
                 sh 'if [ ! -f android-ndk-r23c-linux.zip ] ; then wget https://dl.google.com/android/repository/android-ndk-r23c-linux.zip ; fi'
                 sh 'if [ ! -d android-ndk-r23c ] ; then unzip https://dl.google.com/android/repository/android-ndk-r23c-linux.zip ; fi'
-                android-ndk-r23c
                 sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
                 sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
                 sh 'if [ ! -d android-8.1.0 ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
