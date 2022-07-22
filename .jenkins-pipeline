@@ -8,7 +8,7 @@ pipeline {
                 docker {
                     label 'docker'
                     image 'busybox:latest'
-                    args '-v ' + env.WORKSPACE + ':/ --entrypoint=""'
+                    args '-v ' + env.WORKSPACE + ':/root --entrypoint=""'
                 }
             }
             steps {
