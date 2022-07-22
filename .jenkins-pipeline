@@ -3,8 +3,8 @@ pipeline {
         label 'docker' 
     }
     environment {
-        ANDROID_HOME = '/usr/lib/android-sdk'
-        PATH='$ANDROID_HOME/cmdline-tools/latest/bin:$PATH'
+        ANDROID_HOME    = '/usr/lib/android-sdk'
+        PATH            = '${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.PATH}'
     }
     stages {
         stage('collect-artifacts') {
