@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
         ANDROID_HOME    = '/usr/lib/android-sdk'
-        PATH            = ${env.ANDROID_HOME} + '/cmdline-tools/latest/bin:' + ${env.PATH}
+        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.PATH}"
     }
     stages {
         stage('collect-artifacts') {
