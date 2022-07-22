@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'docker' 
     }
+    environment {
+        ANDROID_HOME = '/usr/lib/android-sdk'
+    }
     stages {
         stage('collect-artifacts') {
             agent {
