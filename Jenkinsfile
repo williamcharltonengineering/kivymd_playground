@@ -3,7 +3,7 @@ pipeline {
         label 'docker' 
     }
     environment {
-        ANDROID_HOME    = '/usr/lib/android-sdk'
+        ANDROID_HOME    = env.WORKSPACE
         PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.PATH}"
     }
     stages {
