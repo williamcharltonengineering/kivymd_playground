@@ -27,6 +27,8 @@ pipeline {
         }
         stage ('setup-env') {
             steps {
+                sh "echo WORKSPACE=${env.WORKSPACE}"
+                sh "echo PATH=${env.PATH}"
                 sh 'if [ ! $(which cython3) ] ; then CYTHON3LOC="$(which cython | head -n 1)" ; ln -s ${CYTHON3LOC}3 ${CYTHON3LOC} ; fi'
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
