@@ -24,17 +24,25 @@ pipeline {
                 sh 'if [ ! -d android-8.1.0 ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
             }
         }
-        stage('build') {
-            agent {
-                docker {
-                    label 'docker'
-                    image 'kivy/buildozer:latest'
-                    args '-v ' + env.WORKSPACE + ':/home/user/hostcwd --entrypoint=""'
-                }
-            }
+        stage ('create-virtual-env') {
             steps {
-                sh 'buildozer --version'
-                sh 'buildozer android debug'
+                sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
+                sh 'cd buildozer ; git pull'
+                sh 'python3 -m venv .venv'
+                sh '.venv/bin/pip install -e buildozer'
+            }
+        }
+        stage('build') {
+            // agent {
+            //     docker {
+            //         label 'docker'
+            //         image 'kivy/buildozer:latest'
+            //         args '-v ' + env.WORKSPACE + ':/home/user/hostcwd --entrypoint=""'
+            //     }
+            // }
+            steps {
+                sh '.venv/bin/buildozer --version'
+                sh '.venv/bin/buildozer android debug'
             }
         }
     }
