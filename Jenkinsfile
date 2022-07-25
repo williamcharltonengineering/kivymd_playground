@@ -32,8 +32,7 @@ pipeline {
                 sh 'if [ ! $(which cython3) ] ; then CYTHON3LOC="$(which cython | head -n 1)" ; ln -s ${CYTHON3LOC} ${CYTHON3LOC}3 ; fi'
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
-                sh 'python3 -m venv .venv'
-                sh '.venv/bin/pip install -e buildozer'
+                sh 'pip3 install --user -e buildozer'
             }
         }
         stage('build') {
