@@ -6,7 +6,7 @@ pipeline {
         // ANDROID_HOME    = "${env.WORKSPACE}"
         ANDROID_NDK     = "android-ndk-r25"
         ANDROID_HOME    = "/usr/lib/android-sdk"
-        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.WORKSPACE}@2/.buildozer/android/platform/build-armeabi-v7a/build/venv/bin:${env.PATH}"
+        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.PATH}"
     }
     stages {
         stage('collect-artifacts') {
@@ -30,7 +30,6 @@ pipeline {
                 sh "echo WORKSPACE=${env.WORKSPACE}"
                 sh "echo PATH=${env.PATH}"
                 sh 'which pip3'
-                sh 'if [ ! $(which cython3) ] ; then CYTHON3LOC="$(which cython | head -n 1)" ; ln -s ${CYTHON3LOC} ${CYTHON3LOC}3 ; fi'
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
                 sh 'pip3 install --user -e buildozer'
