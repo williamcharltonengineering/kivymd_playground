@@ -32,7 +32,6 @@ pipeline {
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
                 sh 'pip install --user -e buildozer'
-                sh 'if [ ! $(which cython) ] ; then ln -s /usr/bin/cython3 /usr/bin/cython ; fi'
             }
         }
         stage('build') {
