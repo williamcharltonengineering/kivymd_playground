@@ -5,7 +5,7 @@ pipeline {
     environment {
         // ANDROID_HOME    = "${env.WORKSPACE}"
         ANDROID_HOME    = "/usr/lib/android-sdk"
-        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.PATH}"
+        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.ANDROID_HOME}/.buildozer/android/platform/build-armeabi-v7a/build/venv/bin:${env.PATH}"
     }
     stages {
         stage('collect-artifacts') {
@@ -24,8 +24,9 @@ pipeline {
                 sh 'if [ ! -d android-8.1.0 ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
             }
         }
-        stage ('create-virtual-env') {
+        stage ('setup-env') {
             steps {
+                sh 'if [ ! $(which cpython3) ] ; then CPYTHON3LOC="$(which cpython | head -n 1)" ; ln -s ${CPYTHON3LOC}3 ${CPYTHON3LOC} ; fi'
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
                 sh 'python3 -m venv .venv'
