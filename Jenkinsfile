@@ -31,7 +31,7 @@ pipeline {
                 sh "echo PATH=${env.PATH}"
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
-                sh 'pip3 install --user -e buildozer'
+                sh 'pip install --user -e buildozer'
             }
         }
         stage('build') {
@@ -43,8 +43,8 @@ pipeline {
             //     }
             // }
             steps {
-                sh '.venv/bin/buildozer --version'
-                sh '.venv/bin/buildozer android debug'
+                sh 'buildozer --version'
+                sh 'buildozer android debug'
             }
         }
     }
