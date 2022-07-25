@@ -6,7 +6,7 @@ pipeline {
         // ANDROID_HOME    = "${env.WORKSPACE}"
         ANDROID_NDK     = "android-ndk-r25"
         ANDROID_HOME    = "/usr/lib/android-sdk"
-        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.WORKSPACE}/.buildozer/android/platform/build-armeabi-v7a/build/venv/bin:${env.PATH}"
+        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.WORKSPACE}@2/.buildozer/android/platform/build-armeabi-v7a/build/venv/bin:${env.PATH}"
     }
     stages {
         stage('collect-artifacts') {
