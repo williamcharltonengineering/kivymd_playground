@@ -29,10 +29,10 @@ pipeline {
             steps {
                 sh "echo WORKSPACE=${env.WORKSPACE}"
                 sh "echo PATH=${env.PATH}"
+                sh 'which pip3'
                 sh 'if [ ! $(which cython3) ] ; then CYTHON3LOC="$(which cython | head -n 1)" ; ln -s ${CYTHON3LOC} ${CYTHON3LOC}3 ; fi'
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
-                sh 'which pip3'
                 sh 'pip3 install --user -e buildozer'
             }
         }
