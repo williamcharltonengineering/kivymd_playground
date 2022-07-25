@@ -43,6 +43,7 @@ pipeline {
             //     }
             // }
             steps {
+                sh "echo PATH=${env.PATH}"
                 sh 'buildozer --version'
                 sh 'buildozer android debug'
             }
