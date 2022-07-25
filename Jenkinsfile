@@ -44,6 +44,8 @@ pipeline {
             // }
             steps {
                 sh "echo PATH=${env.PATH}"
+                sh "echo HOME=${env.HOME}"
+                sh "echo USER=${env.USER}"
                 sh 'buildozer --version'
                 sh 'buildozer android debug'
             }
