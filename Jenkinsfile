@@ -29,7 +29,6 @@ pipeline {
             steps {
                 sh "echo WORKSPACE=${env.WORKSPACE}"
                 sh "echo PATH=${env.PATH}"
-                sh 'which pip3'
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
                 sh 'pip3 install --user -e buildozer'
