@@ -9,22 +9,22 @@ pipeline {
         PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.HOME}/.local/bin:${env.PATH}"
     }
     stages {
-        stage('collect-artifacts') {
-            agent {
-                docker {
-                    label 'docker'
-                    image 'busybox:latest'
-                    args '-v ' + env.WORKSPACE + ':/root --entrypoint=""'
-                }
-            }
-            steps {
-                sh 'if [ ! -f ' + env.ANDROID_NDK + '-linux.zip ] ; then wget https://dl.google.com/android/repository/android-ndk-r25-linux.zip ; fi'
-                sh 'if [ ! -d ' + env.ANDROID_NDK + ' ] ; then unzip ' + env.ANDROID_NDK + '-linux.zip ; fi'
-                sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
-                sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
-                sh 'if [ ! -d cmdline-tools ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
-            }
-        }
+        // stage('collect-artifacts') {
+        //     agent {
+        //         docker {
+        //             label 'docker'
+        //             image 'busybox:latest'
+        //             args '-v ' + env.WORKSPACE + ':/root --entrypoint=""'
+        //         }
+        //     }
+        //     steps {
+        //         sh 'if [ ! -f ' + env.ANDROID_NDK + '-linux.zip ] ; then wget https://dl.google.com/android/repository/android-ndk-r25-linux.zip ; fi'
+        //         sh 'if [ ! -d ' + env.ANDROID_NDK + ' ] ; then unzip ' + env.ANDROID_NDK + '-linux.zip ; fi'
+        //         sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
+        //         sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
+        //         sh 'if [ ! -d cmdline-tools ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
+        //     }
+        // }
         stage ('setup-env') {
             steps {
                 sh "echo WORKSPACE=${env.WORKSPACE}"
@@ -43,15 +43,17 @@ pipeline {
             //     }
             // }
             steps {
-                sh "echo PATH=${env.PATH}"
-                sh "echo HOME=${env.HOME}"
-                sh "echo USER=${env.USER}"
-                sh "echo Overwriting buildozer.spec file with buildozer.jenkins.spec..."
-                sh "cp buildozer.jenkins.spec buildozer.spec"
-                sh '~/.local/bin/buildozer --version'
-                // sh '~/.local/bin/buildozer android clean'
-                sh "echo Starting build..."
-                sh '~/.local/bin/buildozer android debug'
+                withEnv(["PATH=${env.HOME}/.local/bin:${env.PATH}"]) {
+                    sh "echo PATH=${env.PATH}"
+                    sh "echo HOME=${env.HOME}"
+                    sh "echo USER=${env.USER}"
+                    sh "echo Overwriting buildozer.spec file with buildozer.jenkins.spec..."
+                    sh "cp buildozer.jenkins.spec buildozer.spec"
+                    sh '~/.local/bin/buildozer --version'
+                    // sh '~/.local/bin/buildozer android clean'
+                    sh "echo Starting build..."
+                    sh '~/.local/bin/buildozer android debug'
+                }
             }
         }
     }
