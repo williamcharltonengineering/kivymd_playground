@@ -22,7 +22,7 @@ pipeline {
                 sh 'if [ ! -d ' + env.ANDROID_NDK + ' ] ; then unzip ' + env.ANDROID_NDK + '-linux.zip ; fi'
                 sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
                 sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
-                sh 'if [ ! -d commandlinetools ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
+                sh 'if [ ! -d cmdline-tools ] ; then unzip commandlinetools-linux-8512546_latest.zip ; fi'
             }
         }
         stage ('setup-env') {
