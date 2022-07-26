@@ -10,7 +10,7 @@ package.name = testapp
 package.domain = org.test
 
 # (str) Source code where the main.py live
-source.dir = testapp
+source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas
@@ -98,7 +98,7 @@ fullscreen = 0
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 27
+#android.api = 27
 
 # (int) Minimum API your APK will support.
 #android.minapi = 21
@@ -107,7 +107,7 @@ android.api = 27
 #android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 25
+#android.ndk = 23c
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -117,10 +117,10 @@ android.ndk = 25
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
 # this file downloaded manually (in pipeline step) by jenkins in pipeline
-# android.ndk_path = android-ndk-r25
+android.ndk_path = android-ndk-r25
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-# android.sdk_path = android-8.1.0
+android.sdk_path = android-8.1.0
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
