@@ -23,6 +23,8 @@ cloud "Github" {
 
 Setting up the Debian11 Node (`jenkins-docker-slave`) was a bit tricky...
 
+Things I tried before really reading the docs...
+
 ```console
 root@jenkins-docker-slave:/home/will# history | grep install
     3  apt install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
@@ -41,4 +43,25 @@ root@jenkins-docker-slave:/home/will# history | grep install
    96  apt install libtool
    98  apt install libssl-dev
    98  apt install zip
+```
+
+Then I read the docs a bit and found this nugget (changed jdk-13 to jdk17 for debian bullseye)
+
+```console
+apt install -y \
+    git \
+    zip \
+    unzip \
+    openjdk-17-jdk \
+    python3-pip \
+    autoconf \
+    libtool \
+    pkg-config \
+    zlib1g-dev \
+    libncurses5-dev \
+    libncursesw5-dev \
+    libtinfo5 \
+    cmake \
+    libffi-dev \
+    libssl-dev
 ```
