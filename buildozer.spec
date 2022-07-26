@@ -117,7 +117,7 @@ fullscreen = 0
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
 # this file downloaded manually (in pipeline step) by jenkins in pipeline
-android.ndk_path = android-ndk-r23c
+android.ndk_path = android-ndk-r25
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 android.sdk_path = android-8.1.0
