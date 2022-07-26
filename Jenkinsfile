@@ -47,7 +47,7 @@ pipeline {
                 sh "echo HOME=${env.HOME}"
                 sh "echo USER=${env.USER}"
                 sh '~/.local/bin/buildozer --version'
-                sh '~/.local/bin/buildozer clean'
+                sh '~/.local/bin/buildozer android clean'
                 sh '~/.local/bin/buildozer android debug'
             }
         }
