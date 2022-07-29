@@ -117,10 +117,10 @@ android.ndk_api = 21
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
 # this file downloaded manually (in pipeline step) by jenkins in pipeline
-android.ndk_path = android-ndk-r25
+# android.ndk_path = android-ndk-r25
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-android.sdk_path = android-8.1.0
+# android.sdk_path = android-8.1.0
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
