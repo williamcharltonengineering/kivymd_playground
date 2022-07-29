@@ -365,7 +365,7 @@ warn_on_root = 1
 #    Instead of doing:
 #
 #[app]
-#source.exclude_patterns = license,data/audio/*.wav,data/images/original/*
+source.exclude_patterns = Jenkinsfile,Makefile,README.md,pyproject.toml,.gitignore,cmdline-tools,android*
 #
 #    This can be translated into:
 #
