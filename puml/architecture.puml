@@ -1,0 +1,17 @@
+rectangle "Will's Laptop" as will
+cloud "Unraid" as unraid {
+    node "Jenkins" as jenkins {
+        frame "Debian11 Node - jenkins-docker-slave" as build_node {
+        }
+    }
+}
+cloud "Github" as github {
+    node "williamcharltonengineering" as gh_wce {
+        frame "kivymd_playground" as repo {
+        }
+    }
+}
+will --> repo            : git push
+jenkins --> repo         : poll
+jenkins --> build_node   : start build\non change
+build_node --> repo      : pull and build
