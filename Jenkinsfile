@@ -27,7 +27,7 @@ pipeline {
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
                 sh 'pip install --user -e buildozer'
-                sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"platforms;android-27\""
+                sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"platforms;android-30\""
             }
         }
         stage('build') {
