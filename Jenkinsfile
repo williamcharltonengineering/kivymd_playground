@@ -5,7 +5,7 @@ pipeline {
     environment {
         // ANDROID_HOME    = "${env.WORKSPACE}"
         ANDROID_NDK     = "android-ndk-r25"
-        ANDROID_HOME    = "${env.WORKSPACE} + android-8.1.0"
+        ANDROID_HOME    = "${env.WORKSPACE}/android-8.1.0"
         PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.HOME}/.local/bin:${env.PATH}"
     }
     stages {
