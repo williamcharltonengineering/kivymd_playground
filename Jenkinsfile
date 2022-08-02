@@ -6,7 +6,12 @@ pipeline {
         // ANDROID_HOME    = "${env.WORKSPACE}"
         ANDROID_NDK     = "android-ndk-r25"
         ANDROID_HOME    = "${env.WORKSPACE}/android-8.1.0"
-        PATH            = "${env.ANDROID_HOME}/cmdline-tools/latest/bin:${env.HOME}/.local/bin:${env.PATH}"
+        ANDROIDSDK      = "${env.WORKSPACE}/android-sdk-27"
+        ANDROIDNDK      = "${env.WORKSPACE}/${env.ANDROID_NDK}"
+        ANDROIDAPI      = "27"
+        NDKAPI          = "21"
+        ANDROIDNDKVER   = "r25"
+        PATH            = "${env.HOME}/.local/bin:${env.PATH}"
     }
     stages {
         stage('collect-artifacts') {
@@ -28,6 +33,7 @@ pipeline {
                 sh 'cd buildozer ; git pull'
                 sh 'pip install --user -e buildozer'
                 sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"platforms;android-30\""
+                sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"build-tools;28.0.2\""
             }
         }
         stage('build') {
