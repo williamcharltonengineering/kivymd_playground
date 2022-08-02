@@ -37,7 +37,7 @@ pipeline {
                     sh "echo HOME=${env.HOME}"
                     sh "echo USER=${env.USER}"
                     sh "echo Overwriting buildozer.spec file with buildozer.jenkins.spec..."
-                    sh "cp buildozer.jenkins.spec buildozer.spec"
+                    // sh "cp buildozer.jenkins.spec buildozer.spec"
                     sh '~/.local/bin/buildozer --version'
                     // sh '~/.local/bin/buildozer android clean'
                     sh "echo Starting build..."
