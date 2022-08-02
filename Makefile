@@ -21,6 +21,9 @@ get-apk:
 	if [ ! -d apks ] ; then mkdir -p apks ; fi
 	scp will@192.168.1.12:/home/will/jenkinsworkdir/workspace/kivymd_playground/bin/testapp-0.1-armeabi-v7a-debug.apk apks/
 
+install-apk:
+	adb -s ${ANDROID_SERIAL} install apks/testapp-0.1-armeabi-v7a-debug.apk
+
 run:
 	.venv/bin/python testapp/main.py
 
