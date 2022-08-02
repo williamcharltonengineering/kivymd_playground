@@ -6,10 +6,10 @@ pipeline {
         // ANDROID_HOME    = "${env.WORKSPACE}"
         ANDROID_NDK     = "android-ndk-r25"
         ANDROID_HOME    = "${env.WORKSPACE}/android-8.1.0"
-        ANDROIDSDK      = "${env.WORKSPACE}/android-sdk-27"
-        ANDROIDNDK      = "${env.WORKSPACE}/${env.ANDROID_NDK}"
-        ANDROIDAPI      = "27"
-        NDKAPI          = "21"
+        // ANDROIDSDK      = "${env.WORKSPACE}/android-sdk-27"
+        // ANDROIDNDK      = "${env.WORKSPACE}/${env.ANDROID_NDK}"
+        // ANDROIDAPI      = "27"
+        // NDKAPI          = "21"
         PATH            = "${env.HOME}/.local/bin:${env.PATH}"
     }
     stages {
@@ -18,10 +18,10 @@ pipeline {
                 // sh 'if [ ! -f ' + env.ANDROID_NDK + '-linux.zip ] ; then wget https://dl.google.com/android/repository/android-ndk-r25-linux.zip ; fi'
                 // sh 'if [ ! -d ' + env.ANDROID_NDK + ' ] ; then unzip ' + env.ANDROID_NDK + '-linux.zip ; fi'
                 sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
-                sh 'if [ ! -d android-8.1.0 ] ; then unzip platform-27_r03.zip ; fi'
-                sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
-                sh 'mkdir -p android-8.1.0/cmdline-tools/latest ; unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* android-8.1.0/cmdline-tools/latest/'
-                sh 'mkdir -p android-8.1.0/tools ; unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* android-8.1.0/tools/'
+                sh "if [ ! -d ${env.ANDROID_HOME} ] ; then unzip platform-27_r03.zip ; fi"
+                sh "if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi"
+                sh "mkdir -p ${env.ANDROID_HOME}/cmdline-tools/latest ; unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* ${env.ANDROID_HOME}/cmdline-tools/latest/"
+                sh "mkdir -p ${env.ANDROID_HOME}/tools ; unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* ${env.ANDROID_HOME}/tools/"
             }
         }
         stage ('setup-env') {
@@ -31,7 +31,7 @@ pipeline {
                 sh 'if [ ! -d buildozer ] ; then git clone https://github.com/kivy/buildozer ; fi'
                 sh 'cd buildozer ; git pull'
                 sh 'pip install --user -e buildozer'
-                sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"platforms;android-30\""
+                sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"platforms;android-27\""
                 sh "yes | ${env.ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager \"build-tools;28.0.2\""
             }
         }
@@ -42,8 +42,6 @@ pipeline {
                     sh "echo PATH=${env.PATH}"
                     sh "echo HOME=${env.HOME}"
                     sh "echo USER=${env.USER}"
-                    // sh "echo Overwriting buildozer.spec file with buildozer.jenkins.spec..."
-                    // sh "cp buildozer.jenkins.spec buildozer.spec"
                     sh '~/.local/bin/buildozer --version'
                     // sh '~/.local/bin/buildozer android clean'
                     sh "echo Starting build..."
