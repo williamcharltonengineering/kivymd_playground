@@ -17,21 +17,10 @@ setup:
 	cmdline-tools/bin/sdkmanager --sdk_root=android-8.1.0 --install 'platforms;android-27'
 	cmdline-tools/bin/sdkmanager --sdk_root=android-8.1.0 --install 'system-images;android-27;default;arm64-v8a'
 
-apk:
-	.venv/bin/p4a apk \
-		--package=com.williamcharltonengineering.testapp \
-		--requirements=python3,kivy==2.1.0,kivymd==0.104.2,sdl2_ttf==2.0.15,pillow \
-		--private ${PWD}/testapp \
-		--name "TestApp" \
-		--version 0.0.1 \
-		--bootstrap=sdl2 \
-		--arch=armeabi-v7a \
-		--orientation portrait \
-		--sdk_dir ${PWD}/android-8.1.0 \
-		--ndk_dir ${PWD}/android-ndk-r25
+get-apk:
+	if [ ! -d apks ] ; then mkdir -p apks ; fi
+	scp will@192.168.1.12:/home/will/jenkinsworkdir/workspace/kivymd_playground/bin/testapp-0.1-armeabi-v7a-debug.apk apks/
 
 run:
 	.venv/bin/python testapp/main.py
 
-devsync:
-	scp -r * will@jenkins-docker-slave.local:/home/will/jenkinsworkdir/workspace/kivymd_playground/
