@@ -14,4 +14,4 @@ cloud "Github" as github {
 will --> repo            : git push
 jenkins --> repo         : poll
 jenkins --> build_node   : start build\non change
-build_node --> repo      : pull and build
+build_node <-- repo      : pull and build

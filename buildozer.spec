@@ -98,19 +98,19 @@ fullscreen = 0
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 30
+# android.api = 30
 
 # (int) Minimum API your APK will support.
-android.minapi = 21
+# android.minapi = 21
 
 # (int) Android SDK version to use
 #android.sdk = 20
 
 # (str) Android NDK version to use
-android.ndk = 25
+# android.ndk = 25
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
-android.ndk_api = 21
+# android.ndk_api = 21
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True
@@ -120,7 +120,7 @@ android.ndk_api = 21
 # android.ndk_path = android-ndk-r25
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-android.sdk_path = android-8.1.0
+# android.sdk_path = android-8.1.0
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =

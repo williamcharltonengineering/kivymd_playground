@@ -10,7 +10,6 @@ pipeline {
         ANDROIDNDK      = "${env.WORKSPACE}/${env.ANDROID_NDK}"
         ANDROIDAPI      = "27"
         NDKAPI          = "21"
-        ANDROIDNDKVER   = "r25"
         PATH            = "${env.HOME}/.local/bin:${env.PATH}"
     }
     stages {
