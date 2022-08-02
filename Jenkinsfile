@@ -16,7 +16,7 @@ pipeline {
                 sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
                 sh 'if [ ! -d android-8.1.0 ] ; then unzip platform-27_r03.zip ; mkdir -p android-8.1.0/tools ; fi'
                 sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
-                sh 'unzip commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* android-8.1.0/tools/'
+                sh 'unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* android-8.1.0/tools/'
             }
         }
         stage ('setup-env') {
