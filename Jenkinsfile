@@ -14,9 +14,9 @@ pipeline {
                 sh 'if [ ! -f ' + env.ANDROID_NDK + '-linux.zip ] ; then wget https://dl.google.com/android/repository/android-ndk-r25-linux.zip ; fi'
                 sh 'if [ ! -d ' + env.ANDROID_NDK + ' ] ; then unzip ' + env.ANDROID_NDK + '-linux.zip ; fi'
                 sh 'if [ ! -f platform-27_r03.zip ] ; then wget https://dl.google.com/android/repository/platform-27_r03.zip ; fi'
-                sh 'if [ ! -d android-8.1.0 ] ; then unzip platform-27_r03.zip ; mkdir -p android-8.1.0/cmdline-tools/latest ; fi'
+                sh 'if [ ! -d android-8.1.0 ] ; then unzip platform-27_r03.zip ; fi'
                 sh 'if [ ! -f commandlinetools-linux-8512546_latest.zip ] ; then wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip ; fi'
-                sh 'unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* android-8.1.0/cmdline-tools/latest/'
+                sh 'mkdir -p android-8.1.0/cmdline-tools/latest ; unzip -o commandlinetools-linux-8512546_latest.zip ; yes | cp -rf cmdline-tools/* android-8.1.0/cmdline-tools/latest/'
             }
         }
         stage ('setup-env') {
